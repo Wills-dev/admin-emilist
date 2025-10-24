@@ -1,5 +1,7 @@
+import OverviewWrapper from "@/components/organisms/OverviewWrapper/OverviewWrapper";
+
 const OverviewPage = () => {
-  return <div>OverviewPage</div>;
+  return <OverviewWrapper />;
 };
 
 export default OverviewPage;

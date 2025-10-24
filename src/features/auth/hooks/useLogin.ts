@@ -10,6 +10,7 @@ import { toastOption } from "@/lib/helpers/toast";
 import { ROUTES } from "@/lib/helpers/routes";
 import { promiseErrorFunction } from "@/lib/helpers/promiseError";
 import { ApiErrorResponse } from "@/lib/types";
+import { createAuthCookie } from "@/lib/helpers/cookie";
 
 export const useLogin = () => {
   const router = useRouter();
@@ -24,9 +25,11 @@ export const useLogin = () => {
 
   const { mutate, isPending } = useMutation({
     mutationFn: loginAdmin,
-    onSuccess: () => {
+    onSuccess: (data) => {
       resetForm();
+      console.log("data", data);
       toast.success("Login successful", toastOption);
+      createAuthCookie("sessionId", data.data.token);
       router.push(ROUTES?.OVERVIEW);
     },
     onError: (error: ApiErrorResponse) => {

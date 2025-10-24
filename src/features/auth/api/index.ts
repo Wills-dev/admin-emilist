@@ -12,3 +12,20 @@ export const loginAdmin = async ({ email, password }: LoginProps) => {
     throw error;
   }
 };
+
+export const getCurrentUser = async () => {
+  try {
+    const { data } = await axiosInstance.get("/auth/current-user");
+    return data;
+  } catch (error) {
+    throw error;
+  }
+};
+
+export const logoutAdmin = async () => {
+  try {
+    await axiosInstance.post("/auth/log-out");
+  } catch (error) {
+    throw error;
+  }
+};
