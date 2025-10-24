@@ -2,6 +2,7 @@ import { FormEvent } from "react";
 import { useRouter } from "next/navigation";
 
 import toast from "react-hot-toast";
+import { useDispatch } from "react-redux";
 import { useMutation } from "@tanstack/react-query";
 
 import { loginAdmin } from "../api";
@@ -11,9 +12,11 @@ import { ROUTES } from "@/lib/helpers/routes";
 import { promiseErrorFunction } from "@/lib/helpers/promiseError";
 import { ApiErrorResponse } from "@/lib/types";
 import { createAuthCookie } from "@/lib/helpers/cookie";
+import { setUser } from "@/store/features/auth/authSlice";
 
 export const useLogin = () => {
   const router = useRouter();
+  const dispatch = useDispatch();
 
   const {
     showPassword,
@@ -27,9 +30,9 @@ export const useLogin = () => {
     mutationFn: loginAdmin,
     onSuccess: (data) => {
       resetForm();
-      console.log("data", data);
       toast.success("Login successful", toastOption);
       createAuthCookie("sessionId", data.data.token);
+      dispatch(setUser(data.data.userData));
       router.push(ROUTES?.OVERVIEW);
     },
     onError: (error: ApiErrorResponse) => {

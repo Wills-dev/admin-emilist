@@ -33,5 +33,5 @@ export const useLogout = () => {
     },
   });
 
-  return { logout: mutate, isPending };
+  return { isLoggingOut: isPending, logout: () => mutate() };
 };
