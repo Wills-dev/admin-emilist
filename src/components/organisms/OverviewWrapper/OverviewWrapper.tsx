@@ -1,4 +1,5 @@
 import DashboardLayout from "@/components/templates/DashboardLayout/DashboardLayout";
+import GeneralStats from "../GeneralStats/GeneralStats";
 
 const OverviewWrapper = () => {
   return (
@@ -11,7 +12,7 @@ const OverviewWrapper = () => {
           Welcome back! Here&apos;s what&apos;s happening today.
         </p>
       </div>
-      OverviewWrapper
+      <GeneralStats />
     </DashboardLayout>
   );
 };

@@ -18,8 +18,7 @@ describe("Button Component", () => {
     render(<Button>Click Me</Button>);
     const buttonElement = screen.getByText("Click Me");
     expect(buttonElement).toHaveClass(
-      "px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition",
-      { exact: true }
+      "relative flex items-center justify-center bg-green-600 text-white font-semibold px-6 rounded-lg transform hover:scale-[1.02] transition-all"
     );
   });
 
@@ -35,5 +34,10 @@ describe("Button Component", () => {
     const buttonElement = screen.getByText("Click Me");
     buttonElement.click();
     expect(handleClick).toHaveBeenCalledTimes(1);
+  });
+  test("should be disabled when disabled prop is true", () => {
+    render(<Button disabled>Click Me</Button>);
+    const buttonElement = screen.getByText("Click Me");
+    expect(buttonElement).toBeDisabled();
   });
 });
