@@ -1,6 +1,6 @@
 export const ROUTES = {
   OVERVIEW: "/overview",
-  LOGIN: "/login",
+  LOGIN: "/",
   FORGOT_PASSWORD: "/forgot-password",
   SETTINGS: "/settings",
   PROFILE: "/profile",

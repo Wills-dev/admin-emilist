@@ -24,7 +24,7 @@ export const getCurrentUser = async () => {
 
 export const logoutAdmin = async () => {
   try {
-    await axiosInstance.post("/auth/log-out");
+    await axiosInstance.get("/auth/log-out");
   } catch (error) {
     throw error;
   }
