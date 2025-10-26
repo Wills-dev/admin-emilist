@@ -24,9 +24,9 @@ const Button = ({
   height = "h-12",
   disabled = false,
   loading = false,
-  className = `relative flex items-center justify-center bg-green-600 ${
+  className = `relative flex items-center justify-center bg-green-600 text-white font-semibold px-6 rounded-lg transform hover:scale-[1.02] transition-all ${
     !loading && "hover:bg-green-700"
-  } text-white font-semibold px-6 rounded-lg transform hover:scale-[1.02] transition-all`,
+  } `,
 }: ButtonProps) => {
   const buttonElement = (
     <button
