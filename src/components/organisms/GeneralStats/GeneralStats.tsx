@@ -3,7 +3,7 @@
 import { useGetAdminStats } from "@/lib/hooks/useGetAdminStats";
 
 import MetricsWrapper from "../MetricsWrapper/MetricsWrapper";
-import AreaChartWrapper from "../AreaChartWrapper/AreaChartWrapper";
+import AreaChartWrapper from "../ChartWrapper/ChartWrapper";
 
 const GeneralStats = () => {
   const {
@@ -23,6 +23,7 @@ const GeneralStats = () => {
         handleYearChange={handleYearChange}
         currency={currency}
         handleCurrencyChange={handleCurrencyChange}
+        adminStats={adminStats}
       />
     </div>
   );

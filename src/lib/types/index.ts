@@ -13,14 +13,33 @@ export interface ContainerProps {
   className?: string;
 }
 
+export interface TransactionRecord {
+  period: string;
+  NGN: number;
+  USD: number;
+  GBP: number;
+  EUR: number;
+}
+
 export interface AdminStatsType {
+  totalProducts: number;
   totalUsers: number;
   totalJobs: number;
-  totalProducts: number;
   totalPrivateExperts: number;
+  totalTransactions: {
+    totalsByCurrency: {
+      NGN: number;
+      USD: number;
+      GBP: number;
+      EUR: number;
+    };
+    transactions: TransactionRecord[];
+  };
 }
 
 export interface SelectOptionType {
   label: string;
   value: string;
 }
+
+export type Currency = "USD" | "NGN" | "EUR" | "GBP";
