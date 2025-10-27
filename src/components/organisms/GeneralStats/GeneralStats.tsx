@@ -24,6 +24,7 @@ const GeneralStats = () => {
         currency={currency}
         handleCurrencyChange={handleCurrencyChange}
         adminStats={adminStats}
+        isPending={isPending}
       />
     </div>
   );

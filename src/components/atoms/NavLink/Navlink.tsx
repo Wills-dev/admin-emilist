@@ -1,15 +1,18 @@
 import Link from "next/link";
 
+import { useActivePath } from "@/lib/hooks/useActivePath";
+
 interface NavlinkProps {
-  isActive: boolean;
   onClick: () => void;
   link: string;
   name: string;
   icon: React.ComponentType<React.SVGProps<SVGSVGElement>>;
 }
 
-const Navlink = ({ isActive, onClick, link, name, icon }: NavlinkProps) => {
+const Navlink = ({ onClick, link, name, icon }: NavlinkProps) => {
   const Icon = icon;
+  const isActive = useActivePath(link);
+
   return (
     <Link
       href={link}
