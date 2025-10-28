@@ -8,10 +8,30 @@ interface TableBodyWrapProps<TData = unknown> {
 }
 
 const TableBodyWrap = ({ table, columns }: TableBodyWrapProps) => {
+  if (!table) {
+    return (
+      <TableBody>
+        <TableRow>
+          <TableCell colSpan={columns?.length} className="h-24 text-center">
+            No results.
+          </TableCell>
+        </TableRow>
+      </TableBody>
+    );
+  }
+
+  const rowModel = table?.getRowModel();
+
   return (
     <TableBody>
-      {table?.getRowModel().rows?.length ? (
-        table?.getRowModel().rows.map((row) => (
+      {rowModel?.rows?.length < 1 ? (
+        <TableRow>
+          <TableCell colSpan={columns?.length} className="h-24 text-center">
+            No results.
+          </TableCell>
+        </TableRow>
+      ) : (
+        rowModel?.rows.map((row) => (
           <TableRow
             key={row?.id}
             data-state={row.getIsSelected() && "selected"}
@@ -24,12 +44,6 @@ const TableBodyWrap = ({ table, columns }: TableBodyWrapProps) => {
             ))}
           </TableRow>
         ))
-      ) : (
-        <TableRow>
-          <TableCell colSpan={columns?.length} className="h-24 text-center">
-            No results.
-          </TableCell>
-        </TableRow>
       )}
     </TableBody>
   );

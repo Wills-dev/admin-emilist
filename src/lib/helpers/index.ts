@@ -34,3 +34,24 @@ export const years = Array.from({ length: currentYear - 2024 + 1 }, (_, i) => {
   const year = 2024 + i;
   return { label: year.toString(), value: year.toString() };
 });
+
+export const convertDateFormat = (oldDate: string | Date) => {
+  const date = new Date(oldDate).toString().split(" ");
+  const newFormat = ` ${date[2]}  ${date[1]}, ${date[3]}`;
+  return newFormat;
+};
+
+export const getCurrencySign = (currency: string): string => {
+  switch (currency.toUpperCase()) {
+    case "NGN":
+      return "₦";
+    case "USD":
+      return "$";
+    case "EUR":
+      return "€";
+    case "GBP":
+      return "£";
+    default:
+      return "₦";
+  }
+};

@@ -2,7 +2,11 @@ export const ROUTES = {
   OVERVIEW: "/overview",
   LOGIN: "/",
   FORGOT_PASSWORD: "/forgot-password",
+
   USER_MANAGEMENT: "/user-management",
+  VERIFIED_USER: "/user-management/verified-users",
+  PRIVATE_EXPERTS: "/user-management/private-experts",
+  USER_INFO: (id: string) => `/user-management/info/${id}`,
 
   JOB_MANAGEMENT: "/job-management",
 
