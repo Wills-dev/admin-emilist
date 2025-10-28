@@ -9,3 +9,13 @@ export const useActivePath = (path: string) => {
 
   return pathname.startsWith(path);
 };
+
+export const useExactActivePath = (path: string) => {
+  const pathname = usePathname();
+
+  if (pathname !== path) {
+    return false;
+  }
+
+  return true;
+};

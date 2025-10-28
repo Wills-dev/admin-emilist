@@ -59,7 +59,7 @@ const PaginationComponent = ({
         </Select>
         <p className="text-sm font-medium">entries</p>
       </div>
-      <div className="flex-c gap-2">
+      <div className="flex items-center gap-2">
         <div className="flex w-[100px] items-center justify-center text-sm font-medium">
           Page {currentPage} of {totalPages}
         </div>

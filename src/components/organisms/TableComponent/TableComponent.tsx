@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { FormEvent, useState } from "react";
 
 import { Table } from "@/components/ui/table";
 
@@ -21,6 +21,7 @@ import {
   RowSelectionState,
 } from "@tanstack/react-table";
 import ColumnSorting from "@/components/molecules/ColumnSorting/ColumnSorting";
+import SearchInput from "@/components/molecules/SearchInput/SearchInput";
 
 interface TableComponentProps<TData = unknown> {
   columns: ColumnDef<TData>[];
@@ -35,6 +36,10 @@ interface TableComponentProps<TData = unknown> {
   isLastPage: () => boolean;
   limit: number;
   setLimit: (limit: number) => void;
+  search: string;
+  handleSearchange: (search: string) => void;
+  handleClear: () => void;
+  onSubmit: (e: FormEvent) => Promise<void>;
 }
 
 const TableComponent = ({
@@ -50,6 +55,10 @@ const TableComponent = ({
   isLastPage,
   limit,
   setLimit,
+  search,
+  handleSearchange,
+  handleClear,
+  onSubmit,
 }: TableComponentProps) => {
   const [sorting, setSorting] = useState<SortingState>([]);
   const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([]);
@@ -81,11 +90,17 @@ const TableComponent = ({
   });
 
   return (
-    <div className="space-y-2">
+    <div className="space-y-2 pt-10">
       <div className="flex items-center justify-between text-gray-300 dark:text-gray-600 gap-6">
+        <SearchInput
+          value={search}
+          handleChange={handleSearchange}
+          handleClear={handleClear}
+          onSubmit={onSubmit}
+        />
         <ColumnSorting table={table} />
       </div>
-      <Table>
+      <Table className="bg-white">
         <TableHeaderWrap table={table} />
         <TableBodyWrap table={table} columns={columns} />
       </Table>
