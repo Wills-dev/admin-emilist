@@ -59,7 +59,7 @@ export const Column = [
     },
     cell: ({ row }) => {
       const name = row.getValue("name");
-      return name;
+      return name || "N/A";
     },
   }),
   columnHelper.accessor("userName", {
@@ -69,7 +69,7 @@ export const Column = [
           variant="ghost"
           onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
         >
-          Name
+          Username
           <ArrowUpDown className="ml-2 h-4 w-4" />
         </Button>
       );
