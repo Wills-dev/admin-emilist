@@ -13,6 +13,8 @@ interface ButtonProps {
   disabled?: boolean;
   loading?: boolean;
   href?: string;
+  bgColor?: string;
+  bgHoverColor?: string;
 }
 
 const Button = ({
@@ -24,8 +26,10 @@ const Button = ({
   height = "h-12",
   disabled = false,
   loading = false,
-  className = `relative flex items-center justify-center bg-green-600 text-white font-semibold px-6 rounded-lg transform hover:scale-[1.02] transition-all ${
-    !loading && "hover:bg-green-700"
+  bgColor = "bg-green-600",
+  bgHoverColor = "hover:bg-green-700",
+  className = `relative flex items-center justify-center  text-white font-semibold px-6 rounded-lg transform hover:scale-[1.02] transition-all ${bgColor} ${
+    !loading && `${bgHoverColor}`
   } `,
 }: ButtonProps) => {
   const buttonElement = (
