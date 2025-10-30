@@ -1,7 +1,5 @@
 "use client";
 
-import { FormEvent } from "react";
-
 import { ColumnDef } from "@tanstack/react-table";
 
 import { Column } from "./Columns";
@@ -27,17 +25,12 @@ const AllUserWrapper = () => {
     isLoading,
     isError,
     error,
-    refetch,
+    handleSearch,
     handleClear,
     currentPage,
     limit,
-    totalPages,
+    refetch,
   } = useGetAllUsers();
-
-  const handleSearch = async (e: FormEvent) => {
-    e.preventDefault();
-    await refetch();
-  };
 
   const errorMessage = displayError(error);
   const typedColumns = Column as ColumnDef<unknown>[];
@@ -54,7 +47,7 @@ const AllUserWrapper = () => {
         <TableComponent
           columns={typedColumns}
           data={data?.users}
-          totalPages={totalPages}
+          totalPages={data?.totalPages}
           currentPage={currentPage}
           prevPage={prevPage}
           nextPage={nextPage}

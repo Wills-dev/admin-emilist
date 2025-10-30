@@ -15,7 +15,7 @@ const ErrorMessage = ({
     <div className="flex items-center min-h-[40vh] bg-gray-50 p-4">
       <div className="bg-white rounded-lg shadow-lg p-6 max-w-md w-full border border-red-200">
         <div className="flex items-start space-x-3">
-          <div className="flex-shrink-0">
+          <div className="shrink-0">
             <AlertCircle className="h-6 w-6 text-red-500" />
           </div>
           <div className="flex-1">

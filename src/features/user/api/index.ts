@@ -1,24 +1,33 @@
 import { axiosInstance } from "@/lib/axiosInstance";
-
-interface getAllUsersProps {
-  currentPage: number;
-  limit: number;
-  verified?: string;
-  debouncedSearch: string;
-}
+import { fetchDataProps } from "../types";
 
 export const getAllUsers = async ({
   currentPage,
   limit,
-  debouncedSearch,
+  search,
   verified,
-}: getAllUsersProps) => {
+}: fetchDataProps) => {
   try {
     let url = `/admin/users?page=${currentPage}&limit=${limit}`;
     if (verified) url += `&q=${verified}`;
-    if (debouncedSearch) url += `&search=${debouncedSearch}`;
+    if (search) url += `&search=${search}`;
     const { data } = await axiosInstance.get(url);
-    console.log("data", data);
+    return data?.data;
+  } catch (error) {
+    throw error;
+  }
+};
+
+export const getPrivateExperts = async ({
+  limit,
+  currentPage,
+  search,
+}: fetchDataProps) => {
+  try {
+    // let url = `/admin/fetch-private-experts?page=${currentPage}&limit=${limit}`;
+    // if (search) url += `&search=${search}`;
+    const url = `/admin/fetch-private-experts`;
+    const { data } = await axiosInstance.get(url);
     return data?.data;
   } catch (error) {
     throw error;

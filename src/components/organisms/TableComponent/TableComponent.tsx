@@ -39,7 +39,7 @@ interface TableComponentProps<TData = unknown> {
   search: string;
   handleSearchange: (search: string) => void;
   handleClear: () => void;
-  onSubmit: (e: FormEvent) => Promise<void>;
+  onSubmit: (e: FormEvent) => void;
 }
 
 const TableComponent = ({

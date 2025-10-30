@@ -2,15 +2,15 @@
 
 import { ColumnDef } from "@tanstack/react-table";
 
-import { Column } from "../AllUserWrapper/Columns";
+import { Column } from "./Columns";
 import { displayError } from "@/lib/helpers/promiseError";
-import { useGetAllUsers } from "../../hooks/useGetAllUsers";
+import { useGetPrivateExperts } from "@/features/user/hooks/useGetPrivateExperts";
 
 import ErrorMessage from "@/components/molecules/ErrorMessage/ErrorMessage";
 import TableLoader from "@/components/atoms/skeletonLoader/TableLoader";
 import TableComponent from "@/components/organisms/TableComponent/TableComponent";
 
-const VerifiedUserWrapper = () => {
+const PrivateExpertsWrapper = () => {
   const {
     setLimit,
     nextPage,
@@ -25,12 +25,12 @@ const VerifiedUserWrapper = () => {
     isLoading,
     isError,
     error,
-    refetch,
+    handleSearch,
     handleClear,
     currentPage,
     limit,
-    handleSearch,
-  } = useGetAllUsers("verified");
+    refetch,
+  } = useGetPrivateExperts();
 
   const errorMessage = displayError(error);
   const typedColumns = Column as ColumnDef<unknown>[];
@@ -46,7 +46,7 @@ const VerifiedUserWrapper = () => {
       ) : (
         <TableComponent
           columns={typedColumns}
-          data={data?.users}
+          data={data?.experts}
           totalPages={data?.totalPages}
           currentPage={currentPage}
           prevPage={prevPage}
@@ -67,4 +67,4 @@ const VerifiedUserWrapper = () => {
   );
 };
 
-export default VerifiedUserWrapper;
+export default PrivateExpertsWrapper;

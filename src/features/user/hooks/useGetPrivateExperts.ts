@@ -1,9 +1,9 @@
 import { useQuery } from "@tanstack/react-query";
 
-import { getAllUsers } from "../api";
+import { getPrivateExperts } from "../api";
 import { usePaginationState } from "@/lib/hooks/usePaginationState";
 
-export const useGetAllUsers = (verified?: string) => {
+export const useGetPrivateExperts = () => {
   const {
     currentPage,
     limit,
@@ -22,9 +22,9 @@ export const useGetAllUsers = (verified?: string) => {
   } = usePaginationState();
 
   const { data, isPending, isLoading, isError, error, refetch } = useQuery({
-    queryKey: ["all users", submittedQuery, limit, currentPage, verified],
+    queryKey: ["private experts", submittedQuery, limit, currentPage],
     queryFn: () =>
-      getAllUsers({ currentPage, limit, search: submittedQuery, verified }),
+      getPrivateExperts({ currentPage, limit, search: submittedQuery }),
     enabled: true,
     staleTime: 5 * 60 * 1000,
     retry: 1,
