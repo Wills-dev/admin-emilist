@@ -17,7 +17,7 @@ const UserInfoLayout = ({ children, userId }: UserInfoLayout) => {
     <DashboardLayout>
       <div className="space-y-6">
         <AppBreadcrumb items={userBreadcrumb} />
-        <UserProfile />
+        <UserProfile userId={userId} />
         <TableNavLinkWrapper
           links={userInfoLinks(userId)}
           activeLink="text-green-500 font-medium"

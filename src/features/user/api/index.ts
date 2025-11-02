@@ -33,3 +33,19 @@ export const getPrivateExperts = async ({
     throw error;
   }
 };
+
+export const getUserInfo = async ({
+  userId,
+  q,
+}: {
+  userId: string;
+  q?: string;
+}) => {
+  try {
+    const url = `/admin/fetch-userDetails/${userId}${q ? `?q=${q}` : ""}`;
+    const { data } = await axiosInstance.get(url);
+    return data?.data;
+  } catch (error) {
+    throw error;
+  }
+};

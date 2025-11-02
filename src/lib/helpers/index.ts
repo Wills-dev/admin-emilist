@@ -27,7 +27,6 @@ export const currencyConfig = {
   GBP: { symbol: "£", name: "British Pound", color: "text-indigo-600" },
 };
 
-// Generate years dynamically from 2024 to the current year
 const currentYear = new Date().getFullYear();
 
 export const years = Array.from({ length: currentYear - 2024 + 1 }, (_, i) => {
@@ -55,3 +54,22 @@ export const getCurrencySign = (currency: string): string => {
       return "₦";
   }
 };
+
+export function getLevel(input: string | number): number {
+  const str = String(input).trim().toLowerCase();
+
+  const wordMap: { [key: string]: number } = {
+    one: 1,
+    two: 2,
+    three: 3,
+    four: 4,
+    five: 5,
+  };
+
+  const num = Number(str);
+  if (!isNaN(num) && num >= 1 && num <= 5 && Number.isInteger(num)) {
+    return num;
+  }
+
+  return wordMap[str] ?? 5;
+}
