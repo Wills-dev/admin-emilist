@@ -43,3 +43,80 @@ export interface SelectOptionType {
 }
 
 export type Currency = "USD" | "NGN" | "EUR" | "GBP";
+
+export interface ExpertProfile {
+  _id: string;
+  services: string[];
+  firstName: string;
+  lastName: string;
+  languages: string[];
+  address: string;
+  phoneNumber: string;
+  bio: string;
+  renderedServices: RenderedService[];
+  certification: Certification[];
+  membership: Membership[];
+  insurance: Insurance[];
+  coverageArea: string[];
+  userId: string;
+  businessName: string;
+  yearFounded: string;
+  numberOfEmployee: number;
+  businessAddress: string;
+  businessCity: string;
+  businessState: string;
+  businessCountry: string;
+  startingPrice: number;
+  noticePeriod: string;
+  currency: string;
+  businessDescription: string;
+  expertType: string;
+  reviews: Review[];
+  clicks: Clicks;
+  businessImages: string[];
+  createdAt: string;
+  updatedAt: string;
+  __v: number;
+  isVerified: boolean;
+}
+
+export interface RenderedService {
+  name: string;
+  status: string;
+  _id: string;
+}
+
+export interface Certification {
+  issuingOrganisation: string;
+  verificationNumber: string;
+  issuingDate: string;
+  expiringDate: string;
+  isCertificateExpire: boolean;
+  _id: string;
+  isVerified?: boolean;
+}
+
+export interface Membership {
+  organisation: string;
+  positionHeld: string;
+  startDate: string;
+  endDate: string;
+  isMembershipExpire: boolean;
+  _id: string;
+}
+
+export interface Insurance {
+  issuingOrganisation: string;
+  coverage: string;
+  description: string;
+  _id: string;
+}
+
+export interface Clicks {
+  users: string[];
+  clickCount: number;
+}
+
+export interface Review {
+  [key: string]: string;
+}
