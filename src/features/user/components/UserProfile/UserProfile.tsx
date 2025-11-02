@@ -10,6 +10,8 @@ import UserProfileLoader from "@/components/atoms/skeletonLoader/UserProfileLoad
 const UserProfile = ({ userId }: { userId: string }) => {
   const { data, isLoading } = useGetUserInfo(userId);
 
+  console.log("data?.rofileImage", data?.profileImage);
+
   return (
     <>
       {isLoading ? (
@@ -17,6 +19,7 @@ const UserProfile = ({ userId }: { userId: string }) => {
       ) : (
         <div className="flex sm:items-center justify-between sm:gap-10 gap-2">
           <UserAvatar
+            imgUrl={data?.profileImage || ""}
             name={data?.name || data?.fullName}
             rating={data?.level && getLevel(data?.level)}
             level={`${data?.level && getLevel(data?.level)}`}
