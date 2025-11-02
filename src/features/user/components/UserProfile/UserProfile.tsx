@@ -10,8 +10,6 @@ import UserProfileLoader from "@/components/atoms/skeletonLoader/UserProfileLoad
 const UserProfile = ({ userId }: { userId: string }) => {
   const { data, isLoading } = useGetUserInfo(userId);
 
-  console.log("data?.rofileImage", data?.profileImage);
-
   return (
     <>
       {isLoading ? (
