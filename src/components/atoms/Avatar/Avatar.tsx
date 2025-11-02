@@ -16,7 +16,7 @@ const Avatar = ({ name, imgUrl }: AvatarProps) => {
           width={20}
           height={20}
           alt={name}
-          className="w-full h-full object-cover"
+          className="w-full h-full object-cover rounded-full"
         />
       ) : (
         initials
