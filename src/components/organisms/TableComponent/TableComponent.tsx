@@ -100,7 +100,7 @@ const TableComponent = ({
         />
         <ColumnSorting table={table} />
       </div>
-      <Table className="bg-white">
+      <Table className="bg-white shadow">
         <TableHeaderWrap table={table} />
         <TableBodyWrap table={table} columns={columns} />
       </Table>
