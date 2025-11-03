@@ -11,10 +11,10 @@ import TitleCtn from "@/components/atoms/TitleCtn/TitleCtn";
 import UserInfoWrapperLoader from "@/components/atoms/skeletonLoader/UserInfoWrapperLoader";
 import EmptyState from "@/components/molecules/EmptyState/EmptyState";
 
-const UserJobsWrapper = ({ userId }: { userId: string }) => {
+const UserSubscriptionsWrapper = ({ userId }: { userId: string }) => {
   const { data, error, isError, isPending, refetch } = useGetUserInfo(
     userId,
-    "jobs"
+    "subscriptions"
   );
 
   const errorMessage = displayError(error);
@@ -22,6 +22,7 @@ const UserJobsWrapper = ({ userId }: { userId: string }) => {
   if (isError && errorMessage) {
     return <ErrorMessage message={errorMessage} onRetry={refetch} />;
   }
+
   return (
     <>
       {isPending ? (
@@ -54,4 +55,4 @@ const UserJobsWrapper = ({ userId }: { userId: string }) => {
   );
 };
 
-export default UserJobsWrapper;
+export default UserSubscriptionsWrapper;

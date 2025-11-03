@@ -3,18 +3,18 @@
 import { FileX } from "lucide-react";
 
 import { displayError } from "@/lib/helpers/promiseError";
-import { Job } from "@/features/jobs/types";
 import { useGetUserInfo } from "../../hooks/useGetUserInfo";
 
 import ErrorMessage from "@/components/molecules/ErrorMessage/ErrorMessage";
 import TitleCtn from "@/components/atoms/TitleCtn/TitleCtn";
 import UserInfoWrapperLoader from "@/components/atoms/skeletonLoader/UserInfoWrapperLoader";
 import EmptyState from "@/components/molecules/EmptyState/EmptyState";
+import { ProjectType } from "@/features/jobs/types";
 
-const UserJobsWrapper = ({ userId }: { userId: string }) => {
+const UserProjectsWrapper = ({ userId }: { userId: string }) => {
   const { data, error, isError, isPending, refetch } = useGetUserInfo(
     userId,
-    "jobs"
+    "projects"
   );
 
   const errorMessage = displayError(error);
@@ -28,21 +28,21 @@ const UserJobsWrapper = ({ userId }: { userId: string }) => {
         <UserInfoWrapperLoader height="h-12" />
       ) : (
         <div className="space-y-2">
-          {data?.jobs?.length < 1 ? (
+          {data?.projects?.length < 1 ? (
             <EmptyState
               icon={FileX}
-              title="No Job Found!"
-              description="This user doesn't have any job."
+              title="No Projecct Found!"
+              description="This user doesn't have any project."
             />
           ) : (
             <>
-              {data?.jobs?.map((job: Job) => {
+              {data?.projects?.map((project: ProjectType) => {
                 return (
                   <TitleCtn
-                    key={job?._id}
-                    title={job?.title}
-                    id={job?._id}
-                    idTyoe="Job ID:"
+                    key={project?._id}
+                    title={project?.job?.title}
+                    id={project?._id}
+                    idTyoe="Project ID:"
                   />
                 );
               })}
@@ -54,4 +54,4 @@ const UserJobsWrapper = ({ userId }: { userId: string }) => {
   );
 };
 
-export default UserJobsWrapper;
+export default UserProjectsWrapper;

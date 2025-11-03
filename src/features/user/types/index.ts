@@ -41,64 +41,44 @@ export interface PrivateExpertTableType {
   updatedAt: string;
 }
 
-export type Job = {
-  _id: string;
-  category: string;
-  service: string;
-  title: string;
-  description: string;
-  duration: {
-    number: number;
-    period: string;
-  };
-  type: string;
-  budget: number;
-  location: string;
-  expertLevel: string;
-  milestones: Milestone[];
-  achievementDetails: string;
-  currency: string;
+export type UserSubscriptionInfo = {
+  profileImage: string;
+  name: string;
+  level: string;
+  uniqueId: string;
+  fullName: string;
   status: string;
+  subscription: Subscription;
+  price: number;
+  subscriptionTransactions: SubscriptionTransaction[];
+};
+
+export type Subscription = {
+  _id: string;
   userId: string;
-  applications: Application[];
-  isRequestForQuote: boolean;
-  isClosed: boolean;
-  clicks: Clicks;
-  jobFiles: string[];
+  planId: string;
+  status: string;
+  startDate: string;
+  endDate: string;
+  perks: Perk[];
+  subscriptionPeriod: string;
   createdAt: string;
   updatedAt: string;
   __v: number;
-  acceptedApplicationId: string;
-  startDate: string;
 };
 
-export type Milestone = {
-  timeFrame: {
-    number: string;
-    period: string;
-  };
-  invoice: {
-    additionalAmount: number;
-    invoiceRaised: boolean;
-  };
-  achievement: string;
-  amount: number;
-  status: string;
-  paymentStatus: string;
+export type Perk = {
   _id: string;
-  paymentInfo: {
-    amountPaid: number;
-    paymentMethod: string;
-    date: string;
-  };
+  name: string;
+  limit: number;
+  used: number;
 };
 
-export type Application = {
-  _id: string;
-  status: string;
-};
-
-export type Clicks = {
-  users: string[];
-  clickCount: number;
+export type SubscriptionTransaction = {
+  _id?: string;
+  amount?: number;
+  method?: string;
+  reference?: string;
+  status?: string;
+  date?: string;
 };

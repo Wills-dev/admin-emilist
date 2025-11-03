@@ -3,7 +3,7 @@
 import { FileX } from "lucide-react";
 
 import { displayError } from "@/lib/helpers/promiseError";
-import { Job } from "@/features/jobs/types";
+import { ProductType } from "@/features/materials/types";
 import { useGetUserInfo } from "../../hooks/useGetUserInfo";
 
 import ErrorMessage from "@/components/molecules/ErrorMessage/ErrorMessage";
@@ -11,10 +11,10 @@ import TitleCtn from "@/components/atoms/TitleCtn/TitleCtn";
 import UserInfoWrapperLoader from "@/components/atoms/skeletonLoader/UserInfoWrapperLoader";
 import EmptyState from "@/components/molecules/EmptyState/EmptyState";
 
-const UserJobsWrapper = ({ userId }: { userId: string }) => {
+const UserMaterialWrapper = ({ userId }: { userId: string }) => {
   const { data, error, isError, isPending, refetch } = useGetUserInfo(
     userId,
-    "jobs"
+    "materials"
   );
 
   const errorMessage = displayError(error);
@@ -28,21 +28,21 @@ const UserJobsWrapper = ({ userId }: { userId: string }) => {
         <UserInfoWrapperLoader height="h-12" />
       ) : (
         <div className="space-y-2">
-          {data?.jobs?.length < 1 ? (
+          {data?.materials?.length < 1 ? (
             <EmptyState
               icon={FileX}
-              title="No Job Found!"
-              description="This user doesn't have any job."
+              title="No Material Found!"
+              description="This user doesn't have any material."
             />
           ) : (
             <>
-              {data?.jobs?.map((job: Job) => {
+              {data?.materials?.map((material: ProductType) => {
                 return (
                   <TitleCtn
-                    key={job?._id}
-                    title={job?.title}
-                    id={job?._id}
-                    idTyoe="Job ID:"
+                    key={material?._id}
+                    title={material?.name}
+                    id={material?._id}
+                    idTyoe="Material ID:"
                   />
                 );
               })}
@@ -54,4 +54,4 @@ const UserJobsWrapper = ({ userId }: { userId: string }) => {
   );
 };
 
-export default UserJobsWrapper;
+export default UserMaterialWrapper;
