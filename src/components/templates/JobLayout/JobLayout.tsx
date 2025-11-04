@@ -1,20 +1,20 @@
+import JobHeader from "@/components/organisms/JobHeader/JobHeader";
 import DashboardLayout from "../DashboardLayout/DashboardLayout";
 import PageHeader from "@/components/molecules/PageHeader/PageHeader";
-import UserHeader from "@/components/organisms/UserHeader/UserHeader";
 
-const UserLayout = ({ children }: { children: React.ReactNode }) => {
+const JobLayout = ({ children }: { children: React.ReactNode }) => {
   return (
     <DashboardLayout>
       <PageHeader
-        title=" User Management"
-        description=" View and manage details of user on Emilist"
+        title="Job Management"
+        description=" View and manage details of jobs on Emilist"
       />
       <div className="space-y-6">
-        <UserHeader />
+        <JobHeader />
         {children}
       </div>
     </DashboardLayout>
   );
 };
 
-export default UserLayout;
+export default JobLayout;

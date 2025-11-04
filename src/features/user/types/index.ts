@@ -20,6 +20,7 @@ export interface fetchDataProps {
   limit: number;
   verified?: string;
   search: string | null;
+  status?: string;
 }
 
 export interface UserAvailability {
