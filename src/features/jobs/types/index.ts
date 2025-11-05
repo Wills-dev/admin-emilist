@@ -77,3 +77,13 @@ export type Application = {
   _id: string;
   status: string;
 };
+
+export interface JobTableInfo {
+  title: string;
+  userName: string;
+  type: string;
+  poster?: string;
+  status: string;
+  createdAt: string;
+  jobId: string;
+}

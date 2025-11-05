@@ -3,6 +3,7 @@
 import { useState } from "react";
 
 import TableNavLink from "@/components/atoms/TableNavLink/TableNavLink";
+import { useRouter, useSearchParams } from "next/navigation";
 
 type LinkItem = {
   id: number;
@@ -15,19 +16,27 @@ interface TableNavLinkWrapperProps {
   links: LinkItem[];
   activeLink?: string;
   normalLink?: string;
+  queryTitle?: string;
 }
 
 const TableNavLinkWrapper = ({
   links,
   activeLink,
   normalLink,
+  queryTitle = "",
 }: TableNavLinkWrapperProps) => {
-  const initialState = links[0].value || "";
+  const router = useRouter();
+  const searchParams = useSearchParams();
+
+  const initialState = searchParams.get(queryTitle) || links[0].value || "";
   const [activeTab, setActiveTab] = useState(initialState);
 
   const handleTabClick = (link: LinkItem) => {
     if (link.value !== undefined && !link.link) {
       setActiveTab(link.value);
+      const params = new URLSearchParams(searchParams.toString());
+      params.set(queryTitle, link.value);
+      router.replace(`?${params.toString()}`);
     }
   };
 

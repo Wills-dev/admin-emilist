@@ -29,11 +29,11 @@ interface TableComponentProps<TData = unknown> {
   totalPages: number;
   currentPage: number;
   prevPage: () => void;
-  nextPage: () => void;
-  goToLastPage: () => void;
+  nextPage: (totalPages: number) => void;
+  goToLastPage: (totalPages: number) => void;
   goToFirstPage: () => void;
   isFirstPage: () => boolean;
-  isLastPage: () => boolean;
+  isLastPage: (totalPages: number) => boolean;
   limit: number;
   setLimit: (limit: number) => void;
   search: string;
