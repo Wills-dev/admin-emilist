@@ -15,6 +15,7 @@ export const ROUTES = {
     `/user-management/info/${id}/subscriptions`,
 
   JOB_MANAGEMENT: "/job-management",
+  JOB_INFO: (id: string) => `/job-management/info/${id}`,
 
   MATERIALS: "/materials",
 

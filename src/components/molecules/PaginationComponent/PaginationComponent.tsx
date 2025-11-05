@@ -12,11 +12,11 @@ interface PaginationComponentProps {
   totalPages: number;
   currentPage: number;
   prevPage: () => void;
-  nextPage: () => void;
-  goToLastPage: () => void;
+  nextPage: (totalPages: number) => void;
+  goToLastPage: (totalPages: number) => void;
   goToFirstPage: () => void;
   isFirstPage: () => boolean;
-  isLastPage: () => boolean;
+  isLastPage: (totalPages: number) => boolean;
   limit: number;
   setLimit: (limit: number) => void;
 }
@@ -34,7 +34,7 @@ const PaginationComponent = ({
   setLimit,
 }: PaginationComponentProps) => {
   const noPrevPage = isFirstPage();
-  const noNextPage = isLastPage();
+  const noNextPage = () => isLastPage(totalPages);
 
   return (
     <div className="flex items-center justify-between p-4">
@@ -69,6 +69,7 @@ const PaginationComponent = ({
             className="hidden h-8 w-8 p-0 lg:flex"
             onClick={goToFirstPage}
             disabled={noPrevPage}
+            type="button"
           >
             <span className="sr-only">Go to first page</span>
             <svg
@@ -111,8 +112,8 @@ const PaginationComponent = ({
           <Button
             variant="outline"
             className="h-8 w-8 p-0"
-            onClick={nextPage}
-            disabled={noNextPage}
+            onClick={() => nextPage(totalPages)}
+            disabled={noNextPage()}
           >
             <span className="sr-only">Go to next page</span>
             <svg
@@ -133,8 +134,8 @@ const PaginationComponent = ({
           <Button
             variant="outline"
             className="hidden h-8 w-8 p-0 lg:flex"
-            onClick={goToLastPage}
-            disabled={noNextPage}
+            onClick={() => goToLastPage(totalPages)}
+            disabled={noNextPage()}
           >
             <span className="sr-only">Go to last page</span>
             <svg

@@ -2,12 +2,11 @@ import { FormEvent, useState } from "react";
 
 export const usePaginationState = () => {
   const [currentPage, setCurrentPage] = useState(1);
-  const [totalPages, setTotalPages] = useState(1);
   const [limit, setLimit] = useState(10);
   const [search, setSearch] = useState("");
   const [submittedQuery, setSubmittedQuery] = useState<string | null>(null);
 
-  const nextPage = () => {
+  const nextPage = (totalPages: number) => {
     if (currentPage < totalPages) {
       setCurrentPage((prev) => prev + 1);
     } else {
@@ -23,7 +22,7 @@ export const usePaginationState = () => {
     }
   };
 
-  const goToLastPage = () => {
+  const goToLastPage = (totalPages: number) => {
     setCurrentPage(totalPages);
   };
 
@@ -31,7 +30,7 @@ export const usePaginationState = () => {
     setCurrentPage(1);
   };
 
-  const isLastPage = () => {
+  const isLastPage = (totalPages: number) => {
     return currentPage === totalPages;
   };
 
@@ -55,8 +54,6 @@ export const usePaginationState = () => {
 
   return {
     currentPage,
-    totalPages,
-    setTotalPages,
     limit,
     setLimit,
     nextPage,
