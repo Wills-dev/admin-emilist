@@ -29,7 +29,6 @@ export const useLogout = () => {
     },
     onError: (error: ApiErrorResponse) => {
       promiseErrorFunction(error);
-      console.log("error logging out", error);
     },
   });
 

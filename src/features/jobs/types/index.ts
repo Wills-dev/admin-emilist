@@ -60,6 +60,7 @@ export type Milestone = {
   invoice: {
     additionalAmount: number;
     invoiceRaised: boolean;
+    note?: string;
   };
   achievement: string;
   amount: number;
@@ -74,8 +75,26 @@ export type Milestone = {
 };
 
 export type Application = {
-  _id: string;
+  acceptedAt: string;
+  appliedAt: string;
+  biddableDetails: {
+    milestones: Milestone[];
+  };
+  businessId: string;
+  createdAt: string;
+  creator: string;
+  job: string;
   status: string;
+  updatedAt: string;
+  user: {
+    email: string;
+    fullName: string;
+    level: "one" | "two" | "three" | "four" | "five";
+    profileImage: string;
+    userName: string;
+    _id: string;
+  };
+  _id?: string;
 };
 
 export interface JobTableInfo {
@@ -87,3 +106,55 @@ export interface JobTableInfo {
   createdAt: string;
   jobId: string;
 }
+
+export interface JobFileType {
+  url: string;
+  _id: string;
+}
+
+export interface JobType {
+  _id: string;
+  acceptedApplicationId: string;
+  achievementDetails: string;
+  applications: Application[];
+  budget?: number;
+  maxPrice?: number;
+  category: string;
+  clicks: Clicks;
+  createdAt: string;
+  updatedAt: string;
+  currency: string;
+  description: string;
+  dueDate: string | null;
+  duration: {
+    number: number;
+    period: string;
+  };
+  expertLevel: string;
+  isClosed: boolean;
+  isRequestForQuote: boolean;
+  jobFiles: JobFileType[];
+  location: string;
+  milestones: Milestone[];
+  service: string;
+  startDate: string;
+  status: string;
+  title: string;
+  type: string;
+  userId: {
+    _id: string;
+    email: string;
+    fullName: string;
+    level: string;
+    location: string;
+    profileImage: string;
+    userName: string;
+  };
+}
+
+export type JobInfoType = {
+  job: JobType;
+  totalArtisansHired: number;
+  totalJobsPosted: number;
+  __v: number;
+};
