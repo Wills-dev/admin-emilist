@@ -1,9 +1,9 @@
 import UserAvatar from "@/features/user/components/UserAvatar/UserAvatar";
+import PaymentInfo from "@/components/molecules/PaymentInfo/PaymentInfo";
 import AcceptedArtisanInfoLoader from "@/components/atoms/skeletonLoader/AcceptedArtisanInfoLoader";
 
 import { getLevel } from "@/lib/helpers";
 import { useGetUserInfo } from "@/features/user/hooks/useGetUserInfo";
-import PaymentInfo from "@/components/molecules/PaymentInfo/PaymentInfo";
 
 const AcceptedArtisanInfo = ({ userId }: { userId: string }) => {
   const { data, isLoading } = useGetUserInfo(userId, "userDetails");
@@ -36,17 +36,17 @@ const AcceptedArtisanInfo = ({ userId }: { userId: string }) => {
             <div className="space-y-2">
               <PaymentInfo
                 title="Account Name"
-                value={data?.accountDetails?.holdersName}
+                value={data?.accountDetails?.holdersName || "N/A"}
                 extraStyle="text-xs"
               />
               <PaymentInfo
                 title="Bank Name"
-                value={data?.accountDetails?.bank}
+                value={data?.accountDetails?.bank || "N/A"}
                 extraStyle="text-xs"
               />
               <PaymentInfo
                 title="Bank Number"
-                value={data?.accountDetails?.number}
+                value={data?.accountDetails?.number || "N/A"}
                 extraStyle="text-xs"
               />
             </div>
