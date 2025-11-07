@@ -45,7 +45,7 @@ const AdminWrapper = () => {
     <div>
       <PageHeader title="Manage Admin" description="Manange all admins here" />
       <AdminAction />
-      <div className="">
+      {/* <div className="">
         {isLoading ? (
           <TableLoader />
         ) : (
@@ -68,7 +68,7 @@ const AdminWrapper = () => {
             onSubmit={handleSearch}
           />
         )}
-      </div>
+      </div> */}
     </div>
   );
 };
