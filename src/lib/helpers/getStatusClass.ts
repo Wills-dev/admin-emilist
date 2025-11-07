@@ -9,6 +9,8 @@ export const getStatusClass = (status: string) => {
       return "text-green-400 bg-green-100";
     case "rejected":
       return "text-red-400 bg-red-100";
+    case "expired":
+      return "text-red-400 bg-red-100";
     case "unpaid":
       return "text-yellow-400 bg-yellow-100";
     case "processing":
