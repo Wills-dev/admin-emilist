@@ -1,5 +1,5 @@
 import { axiosInstance } from "@/lib/axiosInstance";
-import { fetchDataProps } from "../types";
+import { CreateAdminType, fetchDataProps } from "../types";
 
 export const getAllUsers = async ({
   currentPage,
@@ -45,6 +45,40 @@ export const getUserInfo = async ({
     const url = `/admin/fetch-userDetails/${userId}${q ? `?q=${q}` : ""}`;
     const { data } = await axiosInstance.get(url);
     return data?.data;
+  } catch (error) {
+    throw error;
+  }
+};
+
+export const getAllAdmin = async ({
+  currentPage,
+  limit,
+  search,
+}: fetchDataProps) => {
+  try {
+    let url = `/admin/fetch-admins?page=${currentPage}&limit=${limit}`;
+    if (search) url += `&search=${search}`;
+    const { data } = await axiosInstance.get(url);
+    return data?.data;
+  } catch (error) {
+    throw error;
+  }
+};
+
+export const createAdmin = async ({
+  email,
+  password,
+  fullName,
+  mobile,
+}: CreateAdminType) => {
+  try {
+    const { data } = await axiosInstance.post("/admin/create-admin", {
+      email,
+      password,
+      mobile,
+      fullName,
+    });
+    return data;
   } catch (error) {
     throw error;
   }

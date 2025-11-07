@@ -83,3 +83,10 @@ export type SubscriptionTransaction = {
   status?: string;
   date?: string;
 };
+
+export interface CreateAdminType {
+  email: string;
+  mobile: string;
+  fullName: string;
+  password: string;
+}
