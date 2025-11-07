@@ -1,15 +1,18 @@
 "use client";
 
-import ErrorMessage from "@/components/molecules/ErrorMessage/ErrorMessage";
+import { Suspense } from "react";
+
 import { useGetMaterials } from "@/features/materials/hooks/useGetMaterials";
 import { displayError } from "@/lib/helpers/promiseError";
 import { ColumnDef } from "@tanstack/react-table";
 import { useSearchParams } from "next/navigation";
 import { Column } from "./Column";
+
+import ErrorMessage from "@/components/molecules/ErrorMessage/ErrorMessage";
 import TableLoader from "@/components/atoms/skeletonLoader/TableLoader";
 import TableComponent from "../TableComponent/TableComponent";
 
-const MaterialWrapper = () => {
+const MaterialContent = () => {
   const searchParams = useSearchParams();
   const materialType = searchParams.get("material") || "";
 
@@ -66,6 +69,14 @@ const MaterialWrapper = () => {
         />
       )}
     </div>
+  );
+};
+
+const MaterialWrapper = () => {
+  return (
+    <Suspense fallback={<TableLoader />}>
+      <MaterialContent />
+    </Suspense>
   );
 };
 

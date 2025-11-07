@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { Suspense, useState } from "react";
 
 import TableNavLink from "@/components/atoms/TableNavLink/TableNavLink";
 import { useRouter, useSearchParams } from "next/navigation";
@@ -19,7 +19,7 @@ interface TableNavLinkWrapperProps {
   queryTitle?: string;
 }
 
-const TableNavLinkWrapper = ({
+const TableNavLinkContent = ({
   links,
   activeLink,
   normalLink,
@@ -54,6 +54,24 @@ const TableNavLinkWrapper = ({
         />
       ))}
     </div>
+  );
+};
+
+const TableNavLinkWrapper = ({
+  links,
+  activeLink,
+  normalLink,
+  queryTitle = "",
+}: TableNavLinkWrapperProps) => {
+  return (
+    <Suspense fallback={<div>loadConfig...</div>}>
+      <TableNavLinkContent
+        links={links}
+        activeLink={activeLink}
+        normalLink={normalLink}
+        queryTitle={queryTitle}
+      />
+    </Suspense>
   );
 };
 
