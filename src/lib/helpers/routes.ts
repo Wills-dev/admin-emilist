@@ -18,8 +18,11 @@ export const ROUTES = {
   JOB_INFO: (id: string) => `/job-management/info/${id}`,
 
   MATERIALS: "/materials",
+  MATERIALS_INFO: (materialId: string) => `/materials/info/${materialId}`,
 
   TRANSACTIONS: "/transactions",
+  TRANSACTIONS_INFO: (id: string) => `/transactions/info/${id}`,
+
   SUBSCRIPTION: "/subscription",
   VERIFICATION_REQUEST: "/verification-request",
   MANAGE_ADMIN: "/manage-admin",

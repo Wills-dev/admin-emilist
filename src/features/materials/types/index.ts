@@ -1,19 +1,34 @@
 import { Clicks, Review } from "@/lib/types";
 
+export interface MaterialImages {
+  imageUrl: string;
+  _id: string;
+}
+
+export interface MaterialOwnerType {
+  _id: string;
+  userName: string;
+  fullName?: string;
+  profileImage?: string;
+  level: string;
+}
+
 export type ProductType = {
   _id: string;
   name: string;
+  title: string;
   category: string;
   subCategory: string;
   brand: string;
   description: string;
-  images: string[];
+  images: MaterialImages[];
   availableQuantity: number;
   price: number;
+  discountedPrice: number;
   storeName: string;
   location: string;
   currency: string;
-  userId: string;
+  userId: MaterialOwnerType;
   isDiscounted: boolean;
   reviews: Review[];
   clicks: Clicks;

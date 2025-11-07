@@ -12,7 +12,7 @@ interface JobDetailsProps {
 
 const JobDetails = ({ jobInfo }: JobDetailsProps) => {
   return (
-    <div className="col-span-9 max-lg:col-span-12 flex flex-col w-full bg-white rounded-lg py-6">
+    <div className="col-span-12 flex flex-col w-full bg-white rounded-lg py-6">
       <div className="flex justify-between sm:px-10 px-4 border-b pb-6">
         <Title
           title={jobInfo?.title}

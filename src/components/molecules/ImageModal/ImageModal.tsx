@@ -26,7 +26,7 @@ const ImageModal = ({ src, alt, isOpen, onCancel }: ImageModalProps) => {
 
   return (
     <div
-      className="fixed inset-0 z-50 flex items-center justify-center bg-black opacity-70 b w-full h-screen cursor-zoom-out"
+      className="fixed inset-0 z-50 flex items-center justify-center bg-black opacity-90 b w-full h-screen cursor-zoom-out"
       onClick={onCancel}
     >
       <div

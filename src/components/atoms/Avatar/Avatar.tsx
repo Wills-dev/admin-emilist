@@ -9,7 +9,7 @@ const Avatar = ({ name, imgUrl }: AvatarProps) => {
   const initials = name?.[0]?.toUpperCase();
 
   return (
-    <div className="flex w-12 h-12 bg-gray-400 rounded-full items-center justify-center text-white uppercase">
+    <div className="flex w-12 h-12 min-w-12 min-h-12 bg-gray-400 rounded-full items-center justify-center text-white uppercase">
       {imgUrl ? (
         <Image
           src={imgUrl}

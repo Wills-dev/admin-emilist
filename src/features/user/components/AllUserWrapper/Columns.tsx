@@ -13,6 +13,7 @@ import {
 import ColumnActionDropdown from "@/components/molecules/ColumnActionDropdown/ColumnActionDropdown";
 
 import { ROUTES } from "@/lib/helpers/routes";
+import { DropdownMenuItem } from "@/components/ui/dropdown-menu";
 
 const columnHelper = createColumnHelper();
 
@@ -173,7 +174,9 @@ export const Column = [
 
       return (
         <ColumnActionDropdown>
-          <Link href={ROUTES?.USER_INFO(user?.userId)}>View info</Link>
+          <DropdownMenuItem>
+            <Link href={ROUTES?.USER_INFO(user?.userId)}>View info</Link>
+          </DropdownMenuItem>
         </ColumnActionDropdown>
       );
     },

@@ -8,7 +8,7 @@ import Button from "@/components/atoms/Button/Button";
 import UserProfileLoader from "@/components/atoms/skeletonLoader/UserProfileLoader";
 
 const UserProfile = ({ userId }: { userId: string }) => {
-  const { data, isLoading } = useGetUserInfo(userId);
+  const { data, isLoading } = useGetUserInfo(userId, "userDetails");
 
   return (
     <>
@@ -18,7 +18,7 @@ const UserProfile = ({ userId }: { userId: string }) => {
         <div className="flex sm:items-center justify-between sm:gap-10 gap-2">
           <UserAvatar
             imgUrl={data?.profileImage || ""}
-            name={data?.name || data?.fullName}
+            name={data?.fullName || data?.userName}
             rating={data?.level && getLevel(data?.level)}
             level={`${data?.level && getLevel(data?.level)}`}
           />

@@ -16,7 +16,7 @@ const UserAvatar = ({ name, level, rating, imgUrl }: UserAvatarProps) => {
         {level && (
           <p>
             {" "}
-            <span>Level {level}</span>
+            <span>Level {level} </span>
             <span>|</span>
           </p>
         )}
