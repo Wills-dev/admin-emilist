@@ -9,6 +9,7 @@ import ColumnActionDropdown from "@/components/molecules/ColumnActionDropdown/Co
 
 import { ROUTES } from "@/lib/helpers/routes";
 import { JobTableInfo } from "@/features/jobs/types";
+import { DropdownMenuItem } from "@/components/ui/dropdown-menu";
 
 const columnHelper = createColumnHelper();
 
@@ -113,7 +114,9 @@ export const Column = [
 
       return (
         <ColumnActionDropdown>
-          <Link href={ROUTES?.JOB_INFO(job?.jobId)}>View info</Link>
+          <DropdownMenuItem>
+            <Link href={ROUTES?.JOB_INFO(job?.jobId)}>View info</Link>
+          </DropdownMenuItem>
         </ColumnActionDropdown>
       );
     },

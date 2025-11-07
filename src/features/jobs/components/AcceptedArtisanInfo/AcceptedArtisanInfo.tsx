@@ -4,6 +4,8 @@ import AcceptedArtisanInfoLoader from "@/components/atoms/skeletonLoader/Accepte
 
 import { getLevel } from "@/lib/helpers";
 import { useGetUserInfo } from "@/features/user/hooks/useGetUserInfo";
+import Link from "next/link";
+import { ROUTES } from "@/lib/helpers/routes";
 
 const AcceptedArtisanInfo = ({ userId }: { userId: string }) => {
   const { data, isLoading } = useGetUserInfo(userId, "userDetails");
@@ -22,7 +24,12 @@ const AcceptedArtisanInfo = ({ userId }: { userId: string }) => {
               rating={data?.level && getLevel(data?.level)}
               level={`${data?.level && getLevel(data?.level)}`}
             />
-            <p className="text-sm">{data?.fullName || data?.fullName}</p>
+            <Link
+              href={ROUTES?.USER_INFO(data?._id)}
+              className="text-sm hover:text-green-500 transition-all duration-300"
+            >
+              {data?.fullName || data?.fullName}
+            </Link>
             <p className="text-sm">{data?.email || data?.email}</p>
             {data?.phoneNumber &&
               data?.phoneNumber?.map((phone: string, index: number) => (

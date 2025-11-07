@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
-import { getJobInfo } from "../api";
 
 import { useQuery } from "@tanstack/react-query";
+
 import { Milestone } from "../types";
+import { getJobInfo } from "../api";
 
 export const useGetJobInfo = (jobId: string) => {
   const { data, isPending, isLoading, isError, error, refetch } = useQuery({

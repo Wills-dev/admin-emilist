@@ -1,3 +1,4 @@
+import BackButton from "@/components/atoms/BackButton/BackButton";
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -19,35 +20,38 @@ interface AppBreadcrumbProps {
 
 const AppBreadcrumb = ({ items }: AppBreadcrumbProps) => {
   return (
-    <Breadcrumb>
-      <BreadcrumbList>
-        {items.map((item, index) => {
-          const isLast = index === items.length - 1;
-          return (
-            <Fragment key={index}>
-              {item.href && !isLast ? (
-                <>
-                  <BreadcrumbItem>
-                    <BreadcrumbLink
-                      href={item.href}
-                      className="hover:text-green-500"
-                    >
-                      {item.label}
-                    </BreadcrumbLink>
-                  </BreadcrumbItem>
+    <div className="flex justify-between flex-wrap gap-10">
+      <Breadcrumb>
+        <BreadcrumbList>
+          {items.map((item, index) => {
+            const isLast = index === items.length - 1;
+            return (
+              <Fragment key={index}>
+                {item.href && !isLast ? (
+                  <>
+                    <BreadcrumbItem>
+                      <BreadcrumbLink
+                        href={item.href}
+                        className="hover:text-green-500"
+                      >
+                        {item.label}
+                      </BreadcrumbLink>
+                    </BreadcrumbItem>
 
-                  <BreadcrumbSeparator />
-                </>
-              ) : (
-                <BreadcrumbItem>
-                  <BreadcrumbPage>{item.label}</BreadcrumbPage>
-                </BreadcrumbItem>
-              )}
-            </Fragment>
-          );
-        })}
-      </BreadcrumbList>
-    </Breadcrumb>
+                    <BreadcrumbSeparator />
+                  </>
+                ) : (
+                  <BreadcrumbItem>
+                    <BreadcrumbPage>{item.label}</BreadcrumbPage>
+                  </BreadcrumbItem>
+                )}
+              </Fragment>
+            );
+          })}
+        </BreadcrumbList>
+      </Breadcrumb>
+      <BackButton />
+    </div>
   );
 };
 
