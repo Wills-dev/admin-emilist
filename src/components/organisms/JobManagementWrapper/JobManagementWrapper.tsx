@@ -1,16 +1,19 @@
 "use client";
 
-import { useGetJobs } from "@/features/jobs/hooks/useGetJobs";
-import { displayError } from "@/lib/helpers/promiseError";
+import { Suspense } from "react";
+
 import { ColumnDef } from "@tanstack/react-table";
-import { useSearchParams } from "next/navigation";
+
 import { Column } from "./Column";
+import { displayError } from "@/lib/helpers/promiseError";
+import { useSearchParams } from "next/navigation";
+import { useGetJobs } from "@/features/jobs/hooks/useGetJobs";
 
 import ErrorMessage from "@/components/molecules/ErrorMessage/ErrorMessage";
 import TableLoader from "@/components/atoms/skeletonLoader/TableLoader";
 import TableComponent from "../TableComponent/TableComponent";
 
-const JobManagementWrapper = () => {
+const JobManagementContent = () => {
   const searchParams = useSearchParams();
   const jobType = searchParams.get("job") || "";
 
@@ -66,6 +69,14 @@ const JobManagementWrapper = () => {
         />
       )}
     </div>
+  );
+};
+
+const JobManagementWrapper = () => {
+  return (
+    <Suspense fallback={<TableLoader />}>
+      <JobManagementContent />
+    </Suspense>
   );
 };
 
